@@ -181,6 +181,7 @@ sortClassFields {
     add 'main', 'org.spongepowered.api.event.cause.entity.spawn.SpawnTypes'
     add 'main', 'org.spongepowered.api.event.cause.entity.teleport.TeleportTypes'
     add 'main', 'org.spongepowered.api.extra.fluid.FluidTypes'
+    add 'main', 'org.spongepowered.api.renderer.TextRenderers'
     add 'main', 'org.spongepowered.api.item.Enchantments'
     add 'main', 'org.spongepowered.api.item.FireworkShapes'
     add 'main', 'org.spongepowered.api.item.ItemTypes'
@@ -211,6 +212,9 @@ sortClassFields {
     add 'main', 'org.spongepowered.api.world.gen.PopulatorTypes'
     add 'main', 'org.spongepowered.api.world.gen.WorldGeneratorModifiers'
     add 'main', 'org.spongepowered.api.world.weather.Weathers'
+    add 'main', 'org.spongepowered.api.input.Inputs'
+    add 'main', 'org.spongepowered.api.input.InputSources'
+    add 'main', 'org.spongepowered.api.input.KeybindContexts'
 }
 
 // Shaded API build (with all dependencies included)

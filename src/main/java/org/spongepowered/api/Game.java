@@ -41,6 +41,7 @@ import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.TeleportHelper;
 
 import java.nio.file.Path;
+import java.util.Optional;
 
 /**
  * The core accessor of the API. The implementation uses this to pass
@@ -70,6 +71,23 @@ public interface Game {
      * @throws IllegalStateException If the Server isn't currently available
      */
     Server getServer();
+
+    /**
+     * Returns if the {@link Client} is available for use. The result of this method is entirely
+     * dependent on the implementation.
+     *
+     * @return True if the Client is available, false if not
+     */
+    boolean isClientAvailable();
+
+    /**
+     * Gets the {@link Client} wrapped in an {@link Optional} if the game is client-side.
+     * If it is not, it returns empty.
+     *
+     * @return The client
+     * @throws IllegalStateException If the Client isn't currently available.
+     */
+    Client getClient();
 
     /**
      * Gets the {@link PluginManager}.
