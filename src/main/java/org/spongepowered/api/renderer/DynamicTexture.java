@@ -27,20 +27,16 @@ package org.spongepowered.api.renderer;
 import java.awt.image.BufferedImage;
 
 /**
- * Represents a texture. Create using
- * {@link TextureManager#newTexture(BufferedImage)}.
- * <br/>
- * Once a texture is loaded in the {@link TextureManager}, it cannot be
- * modified. Instead, it is suggested to use a {@link DynamicTexture} and
- * update it whenever it needs to be changed.
- *
- * @see DynamicTexture
+ * Unlike a {@link Texture}, a dynamic texture can be modified without needing to be reloaded in the
+ * {@link TextureManager}. Before drawing, call {@link #updateTexture(BufferedImage)} to set a new texture
  */
-public interface Texture {
+public interface DynamicTexture extends Texture {
 
-    BufferedImage getImage();
+    /**
+     * Updates the texture in the texture manager.
+     *
+     * @param image A new texture
+     */
+    void updateTexture(BufferedImage image);
 
-    boolean isClamped();
-
-    boolean isBlurred();
 }

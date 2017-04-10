@@ -24,23 +24,52 @@
  */
 package org.spongepowered.api.renderer;
 
+import org.spongepowered.api.Sponge;
+
 import java.awt.image.BufferedImage;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Path;
 
 /**
- * Represents a texture. Create using
- * {@link TextureManager#newTexture(BufferedImage)}.
- * <br/>
- * Once a texture is loaded in the {@link TextureManager}, it cannot be
- * modified. Instead, it is suggested to use a {@link DynamicTexture} and
- * update it whenever it needs to be changed.
- *
- * @see DynamicTexture
+ * Contains methods for creating a new {@link Texture} from several sources.
  */
-public interface Texture {
+public final class TextureSources {
 
-    BufferedImage getImage();
 
-    boolean isClamped();
+    public static TextureSource from(Texture texture) {
+        return () -> texture;
+    }
 
-    boolean isBlurred();
+    public static TextureSource from(Path path) {
+        return getTextureManager().newTextureSource(path);
+    }
+
+    public static TextureSource from(URL url) {
+        return getTextureManager().newTextureSource(url);
+    }
+
+    /**
+     * Creates a new {@link TextureSource} from the given {@link InputStream}.
+     * The stream is not consumed until the texture is loaded. It is closed
+     * afterwards.
+     * @param input The input stream
+     * @return
+     */
+    public static TextureSource from(InputStream input) {
+        return getTextureManager().newTextureSource(input);
+    }
+
+    public static TextureSource from(BufferedImage image) {
+        return getTextureManager().newTextureSource(image);
+    }
+
+    private static TextureManager getTextureManager() {
+        return Sponge.getClient().getTextureManager();
+    }
+
+    private TextureSources() {
+    }
+
+
 }

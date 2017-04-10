@@ -24,23 +24,25 @@
  */
 package org.spongepowered.api.renderer;
 
-import java.awt.image.BufferedImage;
+import org.spongepowered.api.resource.ResourceLocation;
+
+import java.io.IOException;
 
 /**
- * Represents a texture. Create using
- * {@link TextureManager#newTexture(BufferedImage)}.
- * <br/>
- * Once a texture is loaded in the {@link TextureManager}, it cannot be
- * modified. Instead, it is suggested to use a {@link DynamicTexture} and
- * update it whenever it needs to be changed.
- *
- * @see DynamicTexture
+ * Provides a {@link Texture} to be loaded to the {@link TextureManager}.
  */
-public interface Texture {
+@FunctionalInterface
+public interface TextureSource {
 
-    BufferedImage getImage();
+    /**
+     * Creates a new {@link Texture} to load. This is called when a new texture
+     * is loaded via
+     * {@link TextureManager#loadTexture(ResourceLocation, TextureSource)} and
+     * will only be called once.
+     *
+     * @return A new texture to be loaded
+     * @throws IOException If an error occurs
+     */
+    Texture loadTexture() throws IOException;
 
-    boolean isClamped();
-
-    boolean isBlurred();
 }
