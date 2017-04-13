@@ -25,7 +25,6 @@
 package org.spongepowered.api.resource;
 
 import org.spongepowered.api.data.DataView;
-import org.spongepowered.api.resourcepack.ResourcePack;
 
 import java.io.InputStream;
 import java.util.Optional;
@@ -50,13 +49,11 @@ public interface Resource {
     InputStream getInputStream();
 
     /**
-     * Gets the {@link ResourcePack} this resource came from.
+     * Gets the {@link ResourceLoader} this resource came from.
      *
-     * TODO this Resource Pack is for server side.
-     *
-     * @return The resource pack
+     * @return The origin resource loader
      */
-    ResourcePack getResourcePack();
+    ResourceLoader getResourceLoader();
 
     /**
      * Gets any metadata which may be attached to this resource as a {@link DataView}

@@ -30,15 +30,13 @@ import org.spongepowered.api.Sponge;
 import org.spongepowered.api.asset.Asset;
 import org.spongepowered.api.renderer.Texture;
 import org.spongepowered.api.renderer.TextureManager;
-import org.spongepowered.api.resourcepack.ResourcePack;
 
 /**
  * <p>
- * A resource location points to a {@link Resource} file in a
- * {@link ResourcePack}. When used in conjunction with {@link ResourceManager},
- * raw data can be retrieved. Alternatively, {@link TextureManager} can prepare
- * an image to be drawn on the screen. A resource location can also point to a
- * dynamically generated or remote {@link Texture}.
+ * A resource location points to a {@link Resource} in a resource pack or {@link ResourceLoader}.
+ * When used in conjunction with {@link ResourceManager}, raw data can be retrieved. Alternatively,
+ * {@link TextureManager} can prepare an image to be drawn on the screen. A resource location can
+ * also point to a dynamically generated or remote {@link Texture}.
  * </p>
  *
  * <p>

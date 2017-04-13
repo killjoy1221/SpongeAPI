@@ -24,6 +24,9 @@
  */
 package org.spongepowered.api.resource;
 
+import org.spongepowered.api.event.Order;
+
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,6 +67,30 @@ public interface ResourceManager {
     Optional<Resource> getAnyResource(ResourceLocation... locations);
 
     /**
+     * Gets a list of all registered {@link ResourceLoader}s in order of priority.
+     *
+     * @return The resource loaders
+     */
+    List<ResourceLoader> getResourceLoaders();
+
+    /**
+     * Registers a {@link ResourceLoader} with the given order priority.
+     *
+     * @param loader The loader
+     * @param priority The load priority
+     */
+    void registerResourceLoader(ResourceLoader loader, Order priority);
+
+    /**
+     * Creates and registers a {@link ResourceLoader} from a filesystem {@link Path}. It must point
+     * to either a directory or a zip archive.
+     *
+     * @param path The path to the file
+     * @param priority The load priority
+     */
+    void registerFileResourceLoader(Path path, Order priority);
+
+    /**
      * Creates a new {@link ResourceLocation}.
      *
      * @param domain The domain
@@ -71,4 +98,5 @@ public interface ResourceManager {
      * @return The new resource location
      */
     ResourceLocation newResourceLocation(String domain, String path);
+
 }
