@@ -33,7 +33,7 @@ public interface Session extends Identifiable {
 
     String getName();
 
-    String getSessionID();
+    String getSessionId();
 
     Type getSessionType();
 

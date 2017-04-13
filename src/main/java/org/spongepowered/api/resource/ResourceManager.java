@@ -63,5 +63,12 @@ public interface ResourceManager {
      */
     Optional<Resource> getAnyResource(ResourceLocation... locations);
 
+    /**
+     * Creates a new {@link ResourceLocation}.
+     *
+     * @param domain The domain
+     * @param path The path
+     * @return The new resource location
+     */
     ResourceLocation newResourceLocation(String domain, String path);
 }

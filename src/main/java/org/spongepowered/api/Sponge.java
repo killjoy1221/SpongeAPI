@@ -185,9 +185,8 @@ public final class Sponge {
     }
 
     /**
-     * Gets the {@link Client} instance from the
-     * {@link Game} instance. If the current platform is not client,
-     * an {@link IllegalStateException} is thrown.
+     * Gets the {@link Client} instance from the {@link Game} instance. If the current platform is
+     * not client or is not loaded, an {@link IllegalStateException} is thrown.
      *
      * <p>Note: During various {@link GameState}s, a {@link Client} instance
      * may <strong>NOT</strong> be available. During these specific states,
@@ -197,6 +196,8 @@ public final class Sponge {
      * @see Game#getClient()
      * @see Game#isClientAvailable()
      * @return The client instance
+     *
+     * @throws IllegalStateException if the platform is not client or is not loaded.
      */
     public static Client getClient() {
         return getGame().getClient();

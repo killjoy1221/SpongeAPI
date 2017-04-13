@@ -28,7 +28,7 @@ import org.spongepowered.api.event.Event;
 import org.spongepowered.api.resource.ResourceManager;
 
 /**
- * Created by Matthew on 4/7/2017.
+ * Called whenever the resource manager is reloaded.
  */
 public interface ResourceReloadEvent extends Event {
 

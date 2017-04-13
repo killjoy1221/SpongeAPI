@@ -27,22 +27,20 @@ package org.spongepowered.api.multiplayer;
 import org.spongepowered.api.data.DataView;
 import org.spongepowered.api.util.Tristate;
 
-import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.util.Optional;
 
 /**
- * Created by Matthew on 4/8/2017.
+ * Represents a sever entry in the multiplayer server list.
  */
 public interface ServerEntry {
 
     /**
-     * Gets the address used to connect to this server. It is guarenteed to be a valid address.
-     *
-     * TODO return {@link InetAddress}?
+     * Gets the address used to connect to this server.
      *
      * @return The address
      */
-    String getAddress();
+    InetSocketAddress getAddress();
 
     /**
      * Gets whether this server is allowed to send a resource pack.
@@ -67,10 +65,16 @@ public interface ServerEntry {
      * Gets any additional info which is fetched from the server response. If
      * this server has not been pinged from the server list, this will return
      * empty.
+     *
      * @return The status reponse
      */
     Optional<ServerStatusResponse> getStatusResponse();
 
+    /**
+     * Gets the raw data which this server is loaded from or saved to.
+     *
+     * @return The dataview
+     */
     Optional<DataView> getDataView();
 
 

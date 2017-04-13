@@ -41,7 +41,6 @@ import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.TeleportHelper;
 
 import java.nio.file.Path;
-import java.util.Optional;
 
 /**
  * The core accessor of the API. The implementation uses this to pass
@@ -81,8 +80,8 @@ public interface Game {
     boolean isClientAvailable();
 
     /**
-     * Gets the {@link Client} wrapped in an {@link Optional} if the game is client-side.
-     * If it is not, it returns empty.
+     * Gets the {@link Client} if the game is client-side and is available. If it is not, an error
+     * is thrown.
      *
      * @return The client
      * @throws IllegalStateException If the Client isn't currently available.
