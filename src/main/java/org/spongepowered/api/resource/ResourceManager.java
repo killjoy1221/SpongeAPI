@@ -24,7 +24,7 @@
  */
 package org.spongepowered.api.resource;
 
-import org.spongepowered.api.event.Order;
+import org.spongepowered.api.util.Priority;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -79,7 +79,7 @@ public interface ResourceManager {
      * @param loader The loader
      * @param priority The load priority
      */
-    void registerResourceLoader(ResourceLoader loader, Order priority);
+    void registerResourceLoader(ResourceLoader loader, Priority priority);
 
     /**
      * Creates and registers a {@link ResourceLoader} from a filesystem {@link Path}. It must point
@@ -88,7 +88,7 @@ public interface ResourceManager {
      * @param path The path to the file
      * @param priority The load priority
      */
-    void registerFileResourceLoader(Path path, Order priority);
+    void registerFileResourceLoader(Path path, Priority priority);
 
     /**
      * Creates a new {@link ResourceLocation}.

@@ -7,6 +7,7 @@ import java.util.Optional;
  * The first time a resource is loaded, the resource manager will iterate through the loaders until
  * it reaches one which returns a {@link Resource}.
  */
+@FunctionalInterface
 public interface ResourceLoader {
 
     /**
