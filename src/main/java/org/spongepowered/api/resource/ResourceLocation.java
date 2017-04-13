@@ -70,7 +70,9 @@ public interface ResourceLocation {
     /**
      * Creates a new resource location object from the specification string.
      * <p>
-     * The spec must include a domain and a path in the format of {@code domain:path/to/resource.png}.
+     * The spec should include a domain and a path in the format of
+     * {@code domain:path/to/resource.png}. If the domain is absent, it is substituted with
+     * {@code minecraft}.
      * </p>
      *
      * @param spec fully qualified resource path, including domain
@@ -79,10 +81,11 @@ public interface ResourceLocation {
      */
     static ResourceLocation of(String spec) {
         int indx = spec.indexOf(':');
-        checkArgument(indx < 0, "Resource has no domain: " + spec);
-
-        String domain = spec.substring(0, indx);
+        String domain = "minecraft";
         String path = spec.substring(indx);
+        if (indx < 0) {
+            domain = spec.substring(0, indx);
+        }
 
         return of(domain, path);
 

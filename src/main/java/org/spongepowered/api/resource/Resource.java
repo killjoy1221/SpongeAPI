@@ -52,6 +52,8 @@ public interface Resource {
     /**
      * Gets the {@link ResourcePack} this resource came from.
      *
+     * TODO this Resource Pack is for server side.
+     *
      * @return The resource pack
      */
     ResourcePack getResourcePack();
@@ -60,7 +62,7 @@ public interface Resource {
      * Gets any metadata which may be attached to this resource as a {@link DataView}
      * wrapped in an {@link Optional}. Metadata is located in a json resource with the same
      * {@link ResourceLocation}, but with {@code ".mcmeta"} appended to the path.
-     * <p>
+     *
      * <p>If this resource has no metadata, empty is returned.</p>
      *
      * @return The metadata

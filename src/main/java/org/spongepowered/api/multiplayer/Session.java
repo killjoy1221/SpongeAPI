@@ -26,6 +26,8 @@ package org.spongepowered.api.multiplayer;
 
 import org.spongepowered.api.util.Identifiable;
 
+import java.util.concurrent.CompletableFuture;
+
 /**
  * The session data for a user.
  */
@@ -38,16 +40,11 @@ public interface Session extends Identifiable {
     Type getSessionType();
 
     /**
-     * <p>Authenticates this session against mojang's session server.</p>
-     *
-     * <p>
-     * Note: This may use network bandwidth, so it may lock up the thread
-     * while it waits.
-     * </p>
+     * <p>Authenticates this session against Mojang's session server.</p>
      *
      * @return The auth level of the user
      */
-    Auth authenticate();
+    CompletableFuture<Auth> authenticate();
 
     enum Type {
         MOJANG,

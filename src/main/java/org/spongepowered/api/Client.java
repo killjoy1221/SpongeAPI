@@ -26,16 +26,19 @@ package org.spongepowered.api;
 
 import org.spongepowered.api.data.value.mutable.Value;
 import org.spongepowered.api.entity.living.player.Player;
+import org.spongepowered.api.multiplayer.ServerConnection;
 import org.spongepowered.api.multiplayer.ServerEntry;
 import org.spongepowered.api.multiplayer.Session;
 import org.spongepowered.api.renderer.TextureManager;
 import org.spongepowered.api.resource.ResourceManager;
+import org.spongepowered.api.util.ThreadContext;
 import org.spongepowered.api.world.World;
 
 import java.net.InetSocketAddress;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Represents the Minecraft client.
@@ -89,21 +92,21 @@ public interface Client extends ThreadContext {
      *
      * @param world The world name or id
      */
-    void loadWorld(String world);
+    CompletableFuture<Server> loadWorld(String world);
 
     /**
      * Joins a server.
      *
      * @param server The server to join
      */
-    void joinServer(ServerEntry server);
+    CompletableFuture<ServerConnection> joinServer(ServerEntry server);
 
     /**
      * Joins a server using the given address.
      *
      * @param address The address to join
      */
-    void joinServer(InetSocketAddress address);
+    CompletableFuture<ServerConnection> joinServer(InetSocketAddress address);
 
     /**
      * Gets the list of servers saved in the multiplayer menu.
@@ -113,11 +116,11 @@ public interface Client extends ThreadContext {
     List<ServerEntry> getServerList();
 
     /**
-     * Gets the current server being played on if it exists
+     * Gets the current server connection
      *
      * @return The current server
      */
-    Optional<ServerEntry> getCurrentServer();
+    Optional<ServerConnection> getServerConnection();
 
     /**
      * Gets the current pause state of the game. In singleplayer, pausing the game will also pause
