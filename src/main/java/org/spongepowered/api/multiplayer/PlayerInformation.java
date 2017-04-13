@@ -23,23 +23,10 @@ public interface PlayerInformation {
     /**
      * Gets the location of this player's skin if it exists
      *
+     * @param type The texture type
      * @return The skin location
      */
-    Optional<ResourceLocation> getSkinLocation();
-
-    /**
-     * Gets the location of this player's cape if it exists
-     *
-     * @return The cape location
-     */
-    Optional<ResourceLocation> getCapeLocation();
-
-    /**
-     * Gets the location of this player's elytra if it exists.
-     *
-     * @return The elytra
-     */
-    Optional<ResourceLocation> getElytraLocation();
+    Optional<ResourceLocation> getTexture(PlayerTexture type);
 
     /**
      * Gets this player's current latency according to the server.
