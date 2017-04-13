@@ -51,7 +51,7 @@ public interface ServerStatusResponse extends StatusResponse {
     /**
      * Gets the brand this server is running on.
      *
-     * <p>e.g. Sponge, Forge, Vanilla, Bukkit, BungeeCord.</p>
+     * <p>e.g. "forge,fml,sponge", "Spigot"</p>
      *
      * @return The brand
      */
