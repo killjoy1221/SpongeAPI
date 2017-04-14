@@ -73,6 +73,8 @@ public interface ResourceManager {
      */
     List<ResourceLoader> getResourceLoaders();
 
+    void reloadResources();
+
     /**
      * Registers a {@link ResourceLoader} with the given order priority.
      *
@@ -82,13 +84,22 @@ public interface ResourceManager {
     void registerResourceLoader(ResourceLoader loader, Priority priority);
 
     /**
+     * Unregisters the given {@link ResourceLoader}.
+     *
+     * @param loader The loader
+     * @return True if it was removed, false if it wasn't registered
+     */
+    boolean unregisterResourceLoader(ResourceLoader loader);
+
+    /**
      * Creates and registers a {@link ResourceLoader} from a filesystem {@link Path}. It must point
      * to either a directory or a zip archive.
      *
      * @param path The path to the file
      * @param priority The load priority
+     * @return The created resource loader
      */
-    void registerFileResourceLoader(Path path, Priority priority);
+    Optional<ResourceLoader> registerFileResourceLoader(Path path, Priority priority);
 
     /**
      * Creates a new {@link ResourceLocation}.

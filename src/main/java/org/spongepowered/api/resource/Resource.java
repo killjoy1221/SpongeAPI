@@ -26,6 +26,7 @@ package org.spongepowered.api.resource;
 
 import org.spongepowered.api.data.DataView;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
 
@@ -46,7 +47,7 @@ public interface Resource {
      *
      * @return The input stream
      */
-    InputStream getInputStream();
+    InputStream getInputStream() throws IOException;
 
     /**
      * Gets the {@link ResourceLoader} this resource came from.
