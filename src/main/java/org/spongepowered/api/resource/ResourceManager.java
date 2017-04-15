@@ -24,12 +24,22 @@
  */
 package org.spongepowered.api.resource;
 
+import org.spongepowered.api.asset.AssetManager;
 import org.spongepowered.api.util.Priority;
 
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
+import java.nio.file.spi.FileSystemProvider;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Unlike the {@link AssetManager}, the resource manager is not limited to just the classpath, nor
+ * is it limited to a single file per entry. A {@link Resource} can be fetched using a
+ * {@link ResourceLocation}. Adding new resources can be done by registering a new
+ * {@link ResourceLoader}. A resource pack on the filesystem can be added by calling
+ * {@link #registerFileResourceLoader(Path, Priority)}.
+ */
 public interface ResourceManager {
 
     /**
@@ -93,11 +103,12 @@ public interface ResourceManager {
 
     /**
      * Creates and registers a {@link ResourceLoader} from a filesystem {@link Path}. It must point
-     * to either a directory or a zip archive.
+     * to a supported {@link FileSystem} object.
      *
      * @param path The path to the file
      * @param priority The load priority
      * @return The created resource loader
+     * @see FileSystemProvider
      */
     Optional<ResourceLoader> registerFileResourceLoader(Path path, Priority priority);
 
